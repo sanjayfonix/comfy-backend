@@ -1,0 +1,51 @@
+{
+    "name": "Debug Echo Webhook",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "debug-echo",
+                "responseMode": "responseNode",
+                "options": {}
+            },
+            "id": "webhook-debug",
+            "name": "Debug Webhook",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1.1,
+            "position": [
+                220,
+                200
+            ],
+            "webhookId": "debug-echo"
+        },
+        {
+            "parameters": {
+                "respondWith": "allIncomingItems"
+            },
+            "id": "respond-debug",
+            "name": "Echo Response",
+            "type": "n8n-nodes-base.respondToWebhook",
+            "typeVersion": 1.1,
+            "position": [
+                520,
+                200
+            ]
+        }
+    ],
+    "connections": {
+        "Debug Webhook": {
+            "main": [
+                [
+                    {
+                        "node": "Echo Response",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}
